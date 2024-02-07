@@ -84,6 +84,9 @@ public class EmployeeController {
      */
     @PostMapping()
     @ApiOperation("新增员工")
+    // EmployeeDTO是DTO，用于封装从前端传递过来的员工数据信息
+    // 在Java中方法的返回类型定义在方法名前面，用于表示该方法返回的数据类型
+    // public Result表示该方法的返回类型是"Result"，是自己自定义封装的一个类，类定义了后端统一返回结果格式，所以返回的数据类型是Result类型的
     public Result save(@RequestBody EmployeeDTO employeeDTO) {
         log.info("新增员工：{}", employeeDTO);
         employeeService.save(employeeDTO);
@@ -98,8 +101,10 @@ public class EmployeeController {
      */
     @GetMapping("/page")
     @ApiOperation("员工分页查询")
+    // Result表示该方法的返回类型是"Result"，<PageResult>这是一个泛型参数
     public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
         log.info("员工分页查询：参数为：{}", employeePageQueryDTO);
+        // 在controller中调用service层的方法
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
     }
@@ -135,6 +140,7 @@ public class EmployeeController {
 
     /**
      * 编辑员工信息
+     *
      * @param employeeDTO
      * @return
      */

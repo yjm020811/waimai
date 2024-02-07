@@ -17,7 +17,7 @@ public interface EmployeeService {
     Employee login(EmployeeLoginDTO employeeLoginDTO);
 
     /**
-     * 新增员工
+     * 新增员工（在service层声明新增员工的方法）
      *
      * @param employeeDTO
      */
