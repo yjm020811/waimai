@@ -75,7 +75,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         // 将DTO转换成实体对象
         Employee employee = new Employee();
 
-        // 对象属性拷贝（从前面的值拷贝到后面）
+        // 对象属性拷贝（将前面的值拷贝到后面）
+        // 注意：如果拷贝的是对象，那么要求对象中的属性名必须和数据库中的字段名是一致的
         BeanUtils.copyProperties(employeeDTO, employee);
 
         // 设置账号状态

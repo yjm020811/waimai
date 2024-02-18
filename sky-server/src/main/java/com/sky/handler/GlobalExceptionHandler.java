@@ -12,7 +12,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 /**
  * 全局异常处理器，处理项目中抛出的业务异常
  */
-@RestControllerAdvice
+@RestControllerAdvice // 全局异常处理器
 @Slf4j
 public class GlobalExceptionHandler {
 
@@ -22,6 +22,8 @@ public class GlobalExceptionHandler {
      * @param ex
      * @return
      */
+    // 当应用程序中发生异常时，Spring会从上到下检查@ExceptionHandler注解标记的方法，查找第一个参数类型与抛出的异常类型相匹配的方法。
+    // 一旦找到匹配的方法，就会调用该方法来处理异常。
     @ExceptionHandler
     public Result exceptionHandler(BaseException ex) {
         log.error("异常信息：{}", ex.getMessage());
@@ -29,7 +31,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 捕获SQL异常
+     * 处理SQL异常
      *
      * @param ex
      * @return
